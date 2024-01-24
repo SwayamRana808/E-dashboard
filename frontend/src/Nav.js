@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, Outlet } from 'react-router-dom'
 const Nav = () => {
   return (
     <div>
@@ -11,6 +11,7 @@ const Nav = () => {
             <li ><Link to="/profile">Profile</Link></li>
 
         </ul>
+        <Outlet/>
     </div>
   )
 }
