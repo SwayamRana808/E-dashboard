@@ -1,7 +1,32 @@
-.ul-nav li{
-  display: inline-block;
-  padding: 10px;
+ .ul-nav{
+  animation-name: boxrotate;
+  animation-duration:0.5s;
+  animation-iteration-count:1;
+  animation-timing-function:ease-in-out;
+ }
+ .heading{
+  animation-name: reveal;
+  animation-duration:2s;
+  animation-iteration-count:1;
+  animation-timing-function:ease-in-out;
+ }
+ @keyframes  boxrotate {
+  to{
+    transform: translateY(0px)  ;
+  }
+  from{
+   transform:  translateY(-50px) ;
+  }
 }
+@keyframes reveal {
+  to{
+     opacity: 1 ;
+  }
+  from{
+    opacity: 0;
+  }
+}
+ 
 /* .slide-in{
   position: fixed;
   top:0;
