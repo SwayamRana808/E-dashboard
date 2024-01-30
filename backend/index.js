@@ -1,13 +1,14 @@
 const express=require('express')
-const mongoose=require('mongoose')
+const cors=require("cors")
+require('./db/config')
+const User=require("./db/users")
 const app=express()
-const connectDB=async ()=>{
-     mongoose.connect('mongodb://localhost:27017/e-com')
-     const productSchema=new mongoose.Schema({});
-     const product =mongoose.model('product',productSchema)
-     const data=await product.find();
-     console.warn(data);
-}
-connectDB();
-
+app.use(cors())
+app.use(express.json())
+app.post('/register',async(req,res)=>{
+    let user=new User(req.body)
+    let result =await user.save()
+    res.send(result);
+ 
+})
 app.listen(5000)

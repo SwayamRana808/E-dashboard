@@ -1,11 +1,33 @@
-import React, { useState } from 'react'
+import React, { useEffect,useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 
 const SignUp =()=>{
     const [name,setName]=useState("");
     const [email,setEmail]=useState("");
     const [password,setPassword]=useState("");
-    const collectData=()=>{
+    const navigate=useNavigate();
+    
+    useEffect(()=>{
+      const auth=localStorage.getItem('user');
+      if(auth){
+         navigate('/')
+      }
+    })
+    const collectData=async ()=>{
         console.log(name,email,password)
+        let result=await fetch('http://localhost:5000/register',{
+          method:'post',
+          body:JSON.stringify({name,email,password}),
+          headers:{
+            'Content-Type':'application/json'
+          }
+        })
+        result =await result.json()
+        console.log(result)
+        localStorage.setItem("user",JSON.stringify(result)) //The JSON.stringify() static method converts a JavaScript value to a JSON string, optionally replacing values if a replacer function is specified or optionally including only the specified properties if a replacer array is specified.
+        if(result){
+          navigate('/')
+        }
     }
   return (
     <div className='shadow-[1px_1px_20px_0.3px_white] bg-[white] rounded-lg  flex flex-col  border-2  border-slate-300 p-[10px] max-w-[300px] items-center m-auto mt-[100px]'>
