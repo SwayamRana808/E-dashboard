@@ -12,7 +12,9 @@ const AddProduct = () => {
             method:"post",
             body:JSON.stringify({name,price,category,company,userID}),
             headers:{
-                "Content-Type":"application/json"
+                "Content-Type":"application/json",
+                 authorization:`bearer ${JSON.parse(localStorage.getItem('token'))}`
+              
             }
         })
         result=await result.json()
@@ -29,15 +31,15 @@ const AddProduct = () => {
      onChange={(e)=>{setName(e.target.value)}}
      value={name}
      ></input>
-     <input className=" p-[10px] rounded-lg bg-slate-300" typeof='text' placeholder='category '
+     <input className=" p-[10px] rounded-lg bg-slate-300" typeof='text' placeholder='Price'
      onChange={(e)=>{setPrice(e.target.value)}}
      value={price}
      ></input>
-     <input className=" p-[10px] rounded-lg bg-slate-300" typeof='text' placeholder='company '
+     <input className=" p-[10px] rounded-lg bg-slate-300" typeof='text' placeholder='Category'
      onChange={(e)=>{setCategory(e.target.value)}}
      value={category}
      ></input>
-     <input className=" p-[10px] rounded-lg bg-slate-300" typeof='text' placeholder='price'
+     <input className=" p-[10px] rounded-lg bg-slate-300" typeof='text' placeholder='Company'
      onChange={(e)=>{setComapany(e.target.value)}}
      value={company}
      ></input>

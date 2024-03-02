@@ -6,6 +6,8 @@ import Privatecomponent from './components/Privatecomponent.js';
 import { BrowserRouter,Routes,Route, RouterProvider,createBrowserRouter, Outlet } from 'react-router-dom';
 import Login from './components/Login.js';
 import AddProduct from './components/AddProduct.js';
+import ProductsList from './components/ProductsList.js';
+import UpdateProducts from './components/UpdateProducts.js';
 function App() {
  
   return (
@@ -19,9 +21,9 @@ function App() {
        <p className='text-[40px] text-center heading text-white'>E-DashBoard</p>
        <Routes>
         <Route element={<Privatecomponent/>}>
-            <Route path='/' element={<h1>Products</h1>}></Route>
+            <Route path='/' element={<ProductsList/>}></Route>
             <Route path='/add' element={ <AddProduct/>}></Route>
-            <Route path='/update' element={<h1>update component</h1>}></Route>
+            <Route path='/update/:id' element={<UpdateProducts/>}></Route>
             <Route path='/profile' element={<h1>Profile</h1>}> </Route>
          </Route>
          <Route path='/signup' element={<SignUp/>}> </Route>

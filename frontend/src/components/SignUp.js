@@ -24,8 +24,9 @@ const SignUp =()=>{
         })
         result =await result.json()
         console.log(result)
-        localStorage.setItem("user",JSON.stringify(result)) //The JSON.stringify() static method converts a JavaScript value to a JSON string, optionally replacing values if a replacer function is specified or optionally including only the specified properties if a replacer array is specified.
-        if(result){
+        localStorage.setItem("user",JSON.stringify(result.result)) //The JSON.stringify() static method converts a JavaScript value to a JSON string, optionally replacing values if a replacer function is specified or optionally including only the specified properties if a replacer array is specified.
+        localStorage.setItem("token",JSON.stringify(result.auth))
+        if(result.auth){
           navigate('/')
         }
     }
